@@ -1,21 +1,13 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
-    username: sa
-    password: sa
+    url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
   jpa:
-    hibernate:
-      ddl-auto: create-drop
-      dialect: org.hibernate.dialect.H2Dialect
-    show-sql: true
     database-platform: org.hibernate.dialect.H2Dialect
   security:
     jwt:
-      secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
-      expiration: 86400000
-      refresh-token:
-        expiration: 604800000
+      secret: testsecretkeytestsecretkeytestsecretkeytestsecretkey
+      expiration: 3600000 # 1 hour
 
 cloud:
   aws:

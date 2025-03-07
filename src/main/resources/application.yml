@@ -1,18 +1,16 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/emartplus
-    username: postgres
-    password: password
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:password}
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
   security:
     jwt:
-      secret: your-secret-key
+      secret: ${JWT_SECRET:your-secret-key}
       expiration: 86400000  # 24 hours
-      refresh-token:
-        expiration: 604800000  # 7 days
 
 server:
   port: 8080
