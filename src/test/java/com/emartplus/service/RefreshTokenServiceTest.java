@@ -15,12 +15,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import com.emartplus.EmartplusApplication;
 import com.emartplus.entity.RefreshToken;
 import com.emartplus.entity.User;
 import com.emartplus.exception.ApiException;
 import com.emartplus.repository.RefreshTokenRepository;
 
-@SpringBootTest
+@SpringBootTest(classes = EmartplusApplication.class)
 @ActiveProfiles("test")
 @ExtendWith(MockitoExtension.class)
 class RefreshTokenServiceTest {

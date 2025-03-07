@@ -13,6 +13,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.test.context.ActiveProfiles;
 
+import com.emartplus.EmartplusApplication;
 import com.emartplus.dto.AuthResponse;
 import com.emartplus.dto.LoginRequest;
 import com.emartplus.dto.UserDto;
@@ -22,7 +23,7 @@ import com.emartplus.exception.ApiException;
 import com.emartplus.repository.RefreshTokenRepository;
 import com.emartplus.security.JwtService;
 
-@SpringBootTest
+@SpringBootTest(classes = EmartplusApplication.class)
 @ActiveProfiles("test")
 class AuthenticationServiceTest {
 
