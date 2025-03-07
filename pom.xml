@@ -5,11 +5,10 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.5</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>3.2.0</version>
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>simpleecommerceapp</artifactId>
+	<groupId>com.emartplus</groupId>
+	<artifactId>emartplus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>simpleecommerceapp</name>
 	<description>Demo project for Spring Boot</description>
@@ -28,6 +27,7 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		<aws.sdk.version>2.20.109</aws.sdk.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -46,7 +46,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -62,6 +65,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-s3</artifactId>
+			<version>1.12.261</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 
