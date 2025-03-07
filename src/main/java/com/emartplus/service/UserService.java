@@ -1,11 +1,13 @@
 package com.emartplus.service;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.emartplus.dto.UserDto;
 import com.emartplus.entity.Role;
 import com.emartplus.entity.User;
+import com.emartplus.exception.ApiException;
 import com.emartplus.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -18,7 +20,7 @@ public class UserService {
 
     public User createUser(UserDto userDto) {
         if (userRepository.existsByEmail(userDto.getEmail())) {
-            throw new RuntimeException("Email already exists");
+            throw new ApiException("Email already exists", HttpStatus.BAD_REQUEST);
         }
 
         User user = new User();
@@ -32,6 +34,6 @@ public class UserService {
 
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email)
-            .orElseThrow(() -> new RuntimeException("User not found"));
+            .orElseThrow(() -> new ApiException("User not found", HttpStatus.NOT_FOUND));
     }
 } 
