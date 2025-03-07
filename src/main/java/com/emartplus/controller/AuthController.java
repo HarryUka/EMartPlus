@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.emartplus.dto.AuthResponse;
 import com.emartplus.dto.LoginRequest;
 import com.emartplus.dto.UserDto;
-import com.emartplus.entity.User;
-import com.emartplus.service.UserService;
+import com.emartplus.service.AuthenticationService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -19,27 +19,15 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final UserService userService;
+    private final AuthenticationService authenticationService;
 
     @PostMapping("/register")
-    public ResponseEntity<AuthResponse> register(@RequestBody UserDto userDto) {
-        User user = userService.createUser(userDto);
-        // For now returning simple response, will add JWT token later
-        return ResponseEntity.ok(new AuthResponse(
-            "dummy-token", 
-            user.getEmail(), 
-            user.getFullName()
-        ));
+    public ResponseEntity<AuthResponse> register(@Valid @RequestBody UserDto userDto) {
+        return ResponseEntity.ok(authenticationService.register(userDto));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest loginRequest) {
-        User user = userService.getUserByEmail(loginRequest.getEmail());
-        // Will add proper authentication later
-        return ResponseEntity.ok(new AuthResponse(
-            "dummy-token",
-            user.getEmail(),
-            user.getFullName()
-        ));
+    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest loginRequest) {
+        return ResponseEntity.ok(authenticationService.login(loginRequest));
     }
 } 
